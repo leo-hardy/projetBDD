@@ -1,7 +1,7 @@
-<html>
+﻿<html>
 
  <head>
-  <title>Test PHP</title>
+  <title>Projet Base de données</title>
  </head>
 
  <body>
@@ -22,6 +22,13 @@
  <button
  onclick="myFunction4()">Effacer la base
  </button>
+
+ <h1>Entrée de l'application</h1>
+ <p>&nbsp;</p>
+ <h2>Liens :</h2>
+ <p><a href="ListeVoitures.php">Liste des voitures en PHP</a></p>
+ <p>&nbsp;</p>
+
 
 
  </body>
