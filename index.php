@@ -6,27 +6,14 @@
 
 
  <body>
- <?php echo '<p>Hello world !</p>'; ?>
-
-<INPUT TYPE="BUTTON"  ONCLICK="window.location.href='auxi.php'">
+ <?php echo '<p>PL & Léo !</p>'; ?>
 
  <button
- onclick="window.location.href='Creerbase.html'";
+ onclick="window.location.href='Modifbdd.html'";
  >Créer la base
  </button>
 
- <button
- onclick="myFunction2()">boutton 2 pas compris
- </button>
 
- <button
- onclick="myFunction3()">bouton 3 pas compris
- </button>
-
- <button
- onclick="myFunction4()"
- >Effacer la base
- </button>
 
  <h1>Entrée de l'application</h1>
  <p>&nbsp;</p>
