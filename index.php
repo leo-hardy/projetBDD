@@ -4,11 +4,15 @@
   <title>Projet Base de données</title>
  </head>
 
+
  <body>
  <?php echo '<p>Hello world !</p>'; ?>
 
+<INPUT TYPE="BUTTON"  ONCLICK="window.location.href='auxi.php'">
+
  <button
- onclick="myFunction1()">Créer la base
+ onclick="window.location.href='Creerbase.html'";
+ >Créer la base
  </button>
 
  <button
@@ -20,7 +24,8 @@
  </button>
 
  <button
- onclick="myFunction4()">Effacer la base
+ onclick="myFunction4()"
+ >Effacer la base
  </button>
 
  <h1>Entrée de l'application</h1>

@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>Base de données livres</title>
+
+<script type="text/javascript">
+
+
+function AfficheCatalogue(f)
+{
+// Préparation de la structure XMLHttpRequest pour communiquer avec PHP
+var xhr_object = null;
+var S = "";
+if (window.XMLHttpRequest) // Firefox
+	{
+		xhr_object = new XMLHttpRequest();
+		// alert("OK");
+	}
+else if(window.ActiveXObject) // Internet Explorer
+	{
+	xhr_object = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+else { // XMLHttpRequest non supporté par le navigateur
+	alert("Votre navigateur ne supporte pas les objets XMLHTTPRequest...");
+	return;
+	}
+// Préparation de l'appel avec la déclaration de la fonction qui de manière
+// asynchrone rendra le résultat dans un temps indéterminé
+xhr_object.open("POST", "Creerbase.php", true);
+
+xhr_object.onreadystatechange = function() {
+	if(xhr_object.readyState == 4)
+	{
+		// Cette instruction sera la dernière à s'exécuter dans ce code JS
+		document.getElementById("AfficheCatalogueDiv").innerHTML =xhr_object.responseText;
+	}
+}
+
+// Envoi de la requête PHP. A cet instant, le moment du retour est inconnu
+xhr_object.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+var data = "";
+xhr_object.send(data);
+}
+
+</script>
+</head>
+
+
+<body>
+<h1>Base de données &quot;Livres&quot;</h1>
+<p>&nbsp;</p>
+<p>(Le bouton &quot;Catalogue&quot; déclenche une requête AJAX)</p>
+<form id="form1" name="form1" method="post" action="">
+	Voir la bdd :
+<input type="button" name="BoutonCatalogue" id="BoutonCatalogue" value="Livres"
+onClick="AfficheCatalogue(this.form)"/>
+</form>
+<p>&nbsp;</p>
+<div id="AfficheCatalogueDiv"></div>
+<p>&nbsp;</p>
+<div id="AcheterOutilsDiv"></div>
+</body>
+</html>
