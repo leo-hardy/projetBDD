@@ -9,7 +9,7 @@
  <?php echo '<p>PL & Léo !</p>'; ?>
 
  <button
- onclick="window.location.href='Modifbdd.html'";
+ onclick="window.location.href='Modifbdd.php'";
  >Créer la base
  </button>
 
