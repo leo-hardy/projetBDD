@@ -32,11 +32,13 @@ if (!isset($_POST["tableChoisie"])){
     <i>
         Veuillez remplir tous les champs.
     </i>
-
-    <form>
+<?php
+    echo "<form action='ajoute.php' method='post'>
         <fieldset>
-            <legend>Champs</legend>
-            <?php
+            <legend>Champs</legend>";
+
+            $arrayLongueurs = ["auteur" => 6, "editeur" => 3, "ecrit_par" => 2, "edite_par" => 2, "livre" => 6];
+
             $arrayAuteur = [0 => "id_auteur", 1 => "nom_auteur", 2 => "pre_nom_auteur",
                 3 => "naissance", 4 => "deces", 5 => "nationalite"];
             $arrayEditeur = [0 => "id_editeur", 1 => "nom_e_diteur", 2 => "site_web"];
@@ -45,43 +47,31 @@ if (!isset($_POST["tableChoisie"])){
             $arrayLivre = [0 => "id_livre", 1 => "titre_livre", 2 => "genre", 3 => "parution",
                 4 => "nature", 5 => "langue"];
 
-            if ($_POST["tableChoisie"] == "livre"){
-                for ($i = 0 ; $i < 6 ; $i++){
-                    echo $arrayLivre[$i]." : <br>";
-                    echo "<input type='text' name=$arrayLivre[$i]>";
+            $arrayArray = ["auteur" => $arrayAuteur, "livre" => $arrayLivre, "ecrit_par" => $arrayEcritPar,
+                "edite_par" => $arrayEditePar, "editeur" => $arrayEditeur];
+
+            if (isset($arrayArray[$_POST["tableChoisie"]])){
+                for ($i = 0 ; $i < $arrayLongueurs[$_POST["tableChoisie"]] ; $i++) {
+                    echo $arrayArray[$_POST["tableChoisie"]][$i] . " : <br>";
+                    echo '<input type="text" name='.$arrayArray[$_POST["tableChoisie"]][$i].'>';
                     echo "<br><br>";
                 }
-            } elseif ($_POST["tableChoisie"] == "auteur"){
-                for ($i = 0 ; $i < 6 ; $i++){
-                    echo $arrayAuteur[$i]." : <br>";
-                    echo "<input type='text' name=$arrayAuteur[$i]>";
-                    echo "<br><br>";
-                }
-            } elseif ($_POST["tableChoisie"] == "ecrit_par"){
-                for ($i = 0 ; $i < 2 ; $i++){
-                    echo $arrayEcritPar[$i]." : <br>";
-                    echo "<input type='text' name=$arrayEcritPar[$i]>";
-                    echo "<br><br>";
-                }
-            } elseif ($_POST["tableChoisie"] == "edite_par"){
-                for ($i = 0 ; $i < 2 ; $i++){
-                    echo $arrayEditePar[$i]." : <br>";
-                    echo "<input type='text' name=$arrayEditePar[$i]>";
-                    echo "<br><br>";
-                }
-            } elseif ($_POST["tableChoisie"] == "editeur"){
-                for ($i = 0 ; $i < 3 ; $i++){
-                    echo $arrayEditeur[$i]." : <br>";
-                    echo "<input type='text' name=$arrayEditeur[$i]>";
-                    echo "<br><br>";
-                }
+                $table = $_POST["tableChoisie"];
+                echo "<br><br>Table choisie (NE PAS MODIFIER) : <br>";
+                echo '<input type="text" name="tableChoisie" value='.$table.'>';
+                echo "<br><br>";
             } else {
                 echo "Table inexistante";
             }
-            ?>
-            <input type="submit" value="Envoyer">
+            echo "<input type='submit' value='Envoyer'/>
         </fieldset>
     </form>
 
+    <br><br>";
+
+            ?>
+    <form>
+        <input type='button' value='Retour page principale' onclick=window.location.href='Modifbdd.html'>
+    </form>
     </body>
 </html>
