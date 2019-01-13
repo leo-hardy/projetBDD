@@ -33,3 +33,16 @@ $conn->close();
 <form>
     <input type='button' value='Retour page principale' onclick=window.location.href='Modifbdd.html'>
 </form>
+
+<form id="form2" name="form2" method="post" action="ajout_entree.php">
+    <label>Nouvelle insertion : choix de la table</label>
+    <select name="tableChoisie">
+        <option value="livre">Livre</option>
+        <option value="ecrit_par">Ecrit_par</option>
+        <option value="edite_par">Edité_par</option>
+        <option value="editeur">Editeur</option>
+        <option value="auteur">Auteur</option>
+    </select>
+    <br/>
+    <input type="submit">
+</form>
