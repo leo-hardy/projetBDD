@@ -86,6 +86,7 @@ xhr_object.send(data);
 }
 
 
+
 </script>
 </head>
 
@@ -103,37 +104,22 @@ onClick="AfficheCatalogue(this.form)"/>
 
 
 <h2>Ajout d'enregistrements dans la base</h2>
-<form id="form2" name="form2" method="post" action="">
-	<label for="ListePHP">Table dans laquelle on veut ajouter un enregistrement</label>
-	<select name="ListePHP" id="ListePHP">
-		<?php
-		$conn = new mysqli('localhost', 'root', '')
-		or die("Impossible de se connecter : " . mysqli_error());
-		mysqli_select_db ($conn,'livres') ;
-		$sql = "SELECT table_name FROM information_schema.tables where table_schema='livres'";
-		$req = mysqli_query($conn,$sql) 
-		or die('Erreur SQL !<br />'.$sql.'<br/>'.mysqli_error($conn));
-		while ($data = mysql_fetch_array($req))
-		{
-			$VItem = utf8_decode($data['table_name']);
-			echo "<option>.$VItem.</option>";
-			}
-		mysqli_free_result ($req);
-		mysqli_close ($conn);
-		?>
-
-
-	</select>
+<form id="form2" name="form2" method="post" action="ajout_entree.php">
+	<label>Table dans laquelle on veut ajouter un enregistrement</label>
+    <select name="tableChoisie">
+        <option value="livre">Livre</option>
+        <option value="ecrit_par">Ecrit_par</option>
+        <option value="edite_par">Edité_par</option>
+        <option value="editeur">Editeur</option>
+        <option value="auteur">Auteur</option>
+    </select>
+    <br/>
+    <input type="submit">
 </form>
 
 <p>&nbsp;</p>
 
- <button
- onclick="myFunction3()">bouton 3 pas compris
- </button>
-<p>&nbsp;</p>
-
-<form id="form2" name="form2" method="post" action="">
+<form id="form3" name="form3" method="post" action="">
 	Effacer la bdd :
 <input type="button" name="BoutonEff" id="BoutonEff" value="Effacer"
 onClick="Effacerbdd(this.form)"/>

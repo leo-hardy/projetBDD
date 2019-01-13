@@ -52,8 +52,12 @@ $info1 = "INSERT INTO `livres`.`auteur` (`id_auteur`, `nom_auteur`, `prenom_aute
 $info2 = "INSERT INTO `livres`.`ecrit_par` (`id_auteur`,`id_livre`) VALUES ('2','2'), ('3','3'), ('3','4'), ('3','1')";
 $info3 = "INSERT INTO `livres`.`edite_par` (`id_editeur`,`id_livre`) VALUES ('1','1'), ('2','3'), ('3','2'), ('5','4')";
 $info4 = "INSERT INTO `livres`.`editeur` (`id_editeur`,`nom_editeur`,`site_web`) VALUES ('1','J\'ai Lu','www.jailu.com '), ('2','Gallimard','www.gallimard.fr'), ('3','LGF','-'), ('4','Albin Michel','www.albin-michel.fr')";
-$info5 = " INSERT INTO `livres`.`livre` (`id_livre`,`titre_livre`,`genre`,`parution`,`nature`,`langue`) VALUES ('1','Le cycle des robots','science-__ction','1950','nouvelle','anglais'), ('2','La possibilite d\'une ile','sentimental','2005','roman','franc_ais'), ('3','Fondation','science-__ction','1942','roman','anglais')" ;
-$conn->query($info1);mysqli_query($conn,$info2);$conn->query($info3);$conn->query($info4);$conn->query($info5);
+$info5 = "INSERT INTO `livres`.`livre` (`id_livre`,`titre_livre`,`genre`,`parution`,`nature`,`langue`) VALUES ('1','Le cycle des robots','science-__ction','1950','nouvelle','anglais'), ('2','La possibilite d\'une ile','sentimental','2005','roman','franc_ais'), ('3','Fondation','science-__ction','1942','roman','anglais')" ;
+$conn->query($info1);
+mysqli_query($conn, $info2);
+$conn->query($info3);
+$conn->query($info4);
+$conn->query($info5);
 
 
  
