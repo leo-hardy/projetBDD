@@ -26,7 +26,7 @@ for ($i = 0 ; $i < $arrayLongueurs[$_POST["tableChoisie"]] ; $i++){
     }
 }
 $conn->query($inser);
-echo "Insertion effectuée.<br>";
+echo "Insertion effectuée.<br><br>";
 $conn->close();
 ?>
 
@@ -35,7 +35,7 @@ $conn->close();
 </form>
 
 <form id="form2" name="form2" method="post" action="ajout_entree.php">
-    <label>Nouvelle insertion : choix de la table</label>
+    <label>Nouvelle insertion : choix de la <table></table></label>
     <select name="tableChoisie">
         <option value="livre">Livre</option>
         <option value="ecrit_par">Ecrit_par</option>
