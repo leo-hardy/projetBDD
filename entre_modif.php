@@ -1,7 +1,42 @@
-<?php
-$conn = new mysqli('localhost', 'root', '');
+<html>
+<head>
 
-$arrayLongueurs = ["auteur" => 6, "editeur" => 3, "ecrit_par" => 2, "edite_par" => 2, "livre" => 6];
+    <?php
+
+    if (!isset($_POST["tableChoisie"])){
+        echo "Problème : page accédée de manière interdite";
+    }
+
+    ?>
+
+    <title>
+        Modification d'enregistrement
+    </title>
+
+
+</head>
+
+<body>
+
+<h1>
+    Modification d'enregistrement dans
+    <i>
+        <?php
+        echo "livres.";
+        echo $_POST["tableChoisie"];
+        ?>
+    </i>
+</h1>
+<br>
+
+<i>
+    Veuillez remplir tous les champs.
+</i>
+<form action='modif.php' method='post'>
+        <fieldset>
+            <legend>Champs</legend>
+
+<?php $arrayLongueurs = ["auteur" => 6, "editeur" => 3, "ecrit_par" => 2, "edite_par" => 2, "livre" => 6];
 
 $arrayAuteur = [0 => "id_auteur", 1 => "nom_auteur", 2 => "prenom_auteur",
     3 => "naissance", 4 => "deces", 5 => "nationalite"];
@@ -14,22 +49,46 @@ $arrayLivre = [0 => "id_livre", 1 => "titre_livre", 2 => "genre", 3 => "parution
 $arrayArray = ["auteur" => $arrayAuteur, "livre" => $arrayLivre, "ecrit_par" => $arrayEcritPar,
     "edite_par" => $arrayEditePar, "editeur" => $arrayEditeur];
 
-$inser = "INSERT INTO `livres`."."`".$_POST["tableChoisie"]."` VALUES (";
-for ($i = 0 ; $i < $arrayLongueurs[$_POST["tableChoisie"]] ; $i++){
-    $inser = $inser."'";
-    $inser = $inser.$_POST[$arrayArray[$_POST["tableChoisie"]][$i]];
-    $inser = $inser."'";
-    if ($i < $arrayLongueurs[$_POST["tableChoisie"]] - 1){
-        $inser = $inser.",";
-    } else {
-        $inser = $inser.")";
-    }
+
+$mysqli = new mysqli('localhost', 'root', '');
+$query = "SELECT * FROM livres.".$_POST["tableChoisie"];
+$result = $mysqli->query($query);
+$cpt = 0;
+while ($cpt < $_POST["ligne"]){
+    $data = null;
+    $data = $result->fetch_assoc();
+    $cpt++;
 }
-$conn->query($inser);
-echo "Insertion effectuée.<br><br>";
-$conn->close();
+
+if (isset($arrayArray[$_POST["tableChoisie"]])){
+    for ($i = 0 ; $i < $arrayLongueurs[$_POST["tableChoisie"]] ; $i++) {
+
+
+        echo $arrayArray[$_POST["tableChoisie"]][$i] . " : ";
+        $clef = $arrayArray[$_POST["tableChoisie"]][$i];
+        echo '<input type="text" name='.$clef.'> (valeur originale : ';
+        echo "<i>$data[$clef]</i>)";
+        echo "<br><br>";
+    }
+    $table = $_POST["tableChoisie"];
+    echo "<br><br>Table choisie (NE PAS MODIFIER) : ";
+    echo '<input type="text" name="tableChoisie" value='.$table.'>';
+    echo "<br><br>";
+} else {
+    echo "Table inexistante";
+}
+
+$result->free();
+$mysqli->close();
+echo "<input type='submit' value='Envoyer'/>
+        </fieldset>
+    </form>
+
+    <br><br>";
+
 ?>
 
+</body>
 <form>
     <input type='button' value='Retour page principale' onclick=window.location.href='Modifbdd.html'>
 </form>
@@ -59,3 +118,4 @@ $conn->close();
     <br/>
     <input type="submit">
 </form>
+</html>

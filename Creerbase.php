@@ -48,7 +48,7 @@ $conn->query($sql4); $conn->query($rename4);
 $conn->query($sql5); $conn->query($rename5);
 
 //remplissage des tables
-$info1 = "INSERT INTO `livres`.`auteur` (`id_auteur`, `nom_auteur`, `prenom_auteur`, `naissance`, `deces`, `nationnalite`) VALUES ('1','Nothomb','Amelie','09/07/1966','-','belge'), ('2','Houellebecq','Michel','26/02/1956','-','francais')";
+$info1 = "INSERT INTO `livres`.`auteur` (`id_auteur`, `nom_auteur`, `prenom_auteur`, `naissance`, `deces`, `nationalite`) VALUES ('1','Nothomb','Amelie','09/07/1966','-','belge'), ('2','Houellebecq','Michel','26/02/1956','-','francais')";
 $info2 = "INSERT INTO `livres`.`ecrit_par` (`id_auteur`,`id_livre`) VALUES ('2','2'), ('3','3'), ('3','4'), ('3','1')";
 $info3 = "INSERT INTO `livres`.`edite_par` (`id_editeur`,`id_livre`) VALUES ('1','1'), ('2','3'), ('3','2'), ('5','4')";
 $info4 = "INSERT INTO `livres`.`editeur` (`id_editeur`,`nom_editeur`,`site_web`) VALUES ('1','J\'ai Lu','www.jailu.com '), ('2','Gallimard','www.gallimard.fr'), ('3','LGF','-'), ('4','Albin Michel','www.albin-michel.fr')";

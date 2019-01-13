@@ -14,19 +14,14 @@ $arrayLivre = [0 => "id_livre", 1 => "titre_livre", 2 => "genre", 3 => "parution
 $arrayArray = ["auteur" => $arrayAuteur, "livre" => $arrayLivre, "ecrit_par" => $arrayEcritPar,
     "edite_par" => $arrayEditePar, "editeur" => $arrayEditeur];
 
-$inser = "INSERT INTO `livres`."."`".$_POST["tableChoisie"]."` VALUES (";
+
 for ($i = 0 ; $i < $arrayLongueurs[$_POST["tableChoisie"]] ; $i++){
-    $inser = $inser."'";
-    $inser = $inser.$_POST[$arrayArray[$_POST["tableChoisie"]][$i]];
-    $inser = $inser."'";
-    if ($i < $arrayLongueurs[$_POST["tableChoisie"]] - 1){
-        $inser = $inser.",";
-    } else {
-        $inser = $inser.")";
-    }
+    $id = $arrayArray[$_POST["tableChoisie"]][0];
+    $elemToUpdate = $arrayArray[$_POST["tableChoisie"]][$i];
+    $update = "UPDATE `livres`.`".$_POST["tableChoisie"]."` SET `".$elemToUpdate."`='".$_POST[$elemToUpdate]."' WHERE `".$id."`=".$_POST[$id];
+    $conn->query($update);
 }
-$conn->query($inser);
-echo "Insertion effectuée.<br><br>";
+echo "Modification effectuée.<br><br>";
 $conn->close();
 ?>
 
