@@ -72,9 +72,9 @@ if (!isset($_POST["requete"])){
 
     if (isset($arraysql[$_POST["requete"]])){
         $sql = $arraysql[$_POST["requete"]] ;
-        $req = mysqli_query($conn,$sql) or die('Erreur SQL !<br />'.$sql.'<br/>'.mysqli_error($conn));
+        $req = mysqli_query($conn, $sql) or die('Erreur SQL !<br />'.$sql.'<br/>'.mysqli_error($conn));
         while($row = mysqli_fetch_array($req)){
-            for($i=0; $i<sizeof($row)/2;$i++){
+            for($i = 0 ; $i < sizeof($row)/2 ; $i++){
                 echo $row[$i]." ";
             }
             echo "<br>";
