@@ -69,8 +69,9 @@ if (!isset($_POST["requete"])){
     */
     $arraysql = array("r1" => $sql1, "r2"=>$sql2, "r3"=>$sql3, "r4"=>$sql4, "r5"=>$sql5, "r6"=>$sql6) ;
 
-    $sql = $arraysql[$_POST["requete"]] ; 
-    if (isset($sql)){
+
+    if (isset($arraysql[$_POST["requete"]])){
+        $sql = $arraysql[$_POST["requete"]] ;
         $req = mysqli_query($conn,$sql) or die('Erreur SQL !<br />'.$sql.'<br/>'.mysqli_error($conn));
         while($row = mysqli_fetch_array($req)){
             for($i=0; $i<sizeof($row)/2;$i++){
@@ -78,6 +79,8 @@ if (!isset($_POST["requete"])){
             }
             echo "<br>";
         }
+    } else {
+        echo "Requête non traitée";
     }
 
 
