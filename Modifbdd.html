@@ -93,15 +93,17 @@ xhr_object.send(data);
 
 <body>
 <h1>Base de données &quot;Livres&quot;</h1>
-<p>&nbsp;</p>
 
+<h2>
+    Créer la base
+</h2>
 <form id="form1" name="form1" method="post" action="">
-	Créer la bdd :
+
 <input type="button" name="BoutonCreer" id="BoutonCreer" value="Livres"
 onClick="AfficheCatalogue(this.form)"/>
 </form>
 
-
+<p> </p>
 
 <h2>Ajout d'enregistrements dans la base</h2>
 <form id="form2" name="form2" method="post" action="ajout_entree.php">
@@ -134,18 +136,13 @@ onClick="AfficheCatalogue(this.form)"/>
 </form>
 
 <p></p>
-<br><br>
 
-<form id="form3" name="form3" method="post" action="">
-	Effacer la bdd :
-<input type="button" name="BoutonEff" id="BoutonEff" value="Effacer"
-onClick="Effacerbdd(this.form)"/>
-</form>
+
 
 
 <h2>Interroger la base de données</h2>
 <form id="form5" name="form5" method="post" action="requetes.php">
-    <label>Qu'elle est la requête souhaitée ?</label>
+    <label>Quelle est la requête souhaitée ?</label>
     <select name="requete">
         <option value="r1">La liste de tous les livres</option>
         <option value="r2">La liste de tous les auteurs</option>
@@ -178,7 +175,13 @@ onClick="Effacerbdd(this.form)"/>
 
 
 <p>&nbsp;</p>
-
+<h2>
+    Effacer la base
+</h2>
+<form id="form3" name="form3" method="post" action="">
+    <input type="button" name="BoutonEff" id="BoutonEff" value="Effacer"
+           onClick="Effacerbdd(this.form)"/>
+</form>
 
 <p>&nbsp;</p>
 <div id="AfficheCatalogueDiv"></div>
