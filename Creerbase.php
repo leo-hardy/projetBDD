@@ -31,7 +31,7 @@ else {
 
 
 //création des tables
-$sql1 = "CREATE TABLE IF NOT EXISTS `livres`.`TABLE 1` (`id_auteur` varchar(10), `nom_auteur` varchar(40), `prenom_auteur` varchar(40), `naissance` varchar(10), `deces` varchar(10), `nationnalite`	 varchar(20)) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci";
+$sql1 = "CREATE TABLE IF NOT EXISTS `livres`.`TABLE 1` (`id_auteur` varchar(10), `nom_auteur` varchar(40), `prenom_auteur` varchar(40), `naissance` varchar(10), `deces` varchar(10), `nationnalite` varchar(20)) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci";
 $sql2 = "CREATE TABLE IF NOT EXISTS `livres`.`TABLE 2` (`id_auteur` varchar(10), `id_livre` varchar(10)) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci"; 
 $sql3 = "CREATE TABLE IF NOT EXISTS `livres`.`TABLE 3` (`id_editeur` varchar(10), `id_livre` varchar(10)) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci";
 $sql4 = "CREATE TABLE IF NOT EXISTS `livres`.`TABLE 4` (`id_editeur` varchar(10), `nom_editeur` varchar(40), `site_web` varchar(100)) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci";
