@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<title>Base de données livres</title>
+<title>Base de données liiiiivres</title>
 
 <script type="text/javascript">
 
@@ -141,6 +141,39 @@ onClick="AfficheCatalogue(this.form)"/>
 <input type="button" name="BoutonEff" id="BoutonEff" value="Effacer"
 onClick="Effacerbdd(this.form)"/>
 </form>
+
+
+<h2>Interroger la base de données</h2>
+<form id="form5" name="form5" method="post" action="requetes.php">
+    <label>Qu'elle est la requête souhaitée ?</label>
+    <select name="requete">
+        <option value="r1">La liste de tous les livres</option>
+        <option value="r2">La liste de tous les auteurs</option>
+        <option value="r3">La liste de tous les éditeurs</option>
+        <option value="r4">Le titre et le nom de l’éditeur de tous les livres</option>
+		<option value="r5">Le titre, l’auteur et l’éditeur de tous les livres</option>
+		<option value="r6">Le titre des livres dont l’auteur est "Isaac Asimov"</option>
+		<option value="r7">Le nom des auteurs (sans doublons) publiés par l’éditeur "J’ai Lu"</option>
+		<option value="r8">Le nombre de livres écrits par "Amélie Nothomb"</option>
+		<option value="r9">Le nombre de livres publiés par editeur</option>
+		<option value="r10">Les livres de science-fiction n’ayant pas été écrit par "Asimov Isaac"</option>
+		<option value="r11">Les auteurs publiés par les mêmes éditeurs</option>
+		<option value="r12">Les nouvelles de science-fiction écrites par "Asimov Isaac" et non éditées
+			par "Gallimard"</option>
+		<option value="r13">Les livres écrits par des auteurs décédés</option>
+		<option value="r14">Les auteurs ayant écrit des livres de natures différentes</option>
+		<option value="r15">Les auteurs ayant écrit au moins deux livres</option>
+		<option value="r16">question supplémentaire 1</option>
+		<option value="r17">question supplémentaire 2</option>
+		<option value="r18">question supplémentaire 3</option>
+		<option value="r19">question supplémentaire 4</option>
+    </select>
+    <br/>
+    <input type="submit">
+</form>
+
+
+
 
 
 
