@@ -64,10 +64,20 @@ if (isset($arrayArray[$_POST["tableChoisie"]])){
     for ($i = 0 ; $i < $arrayLongueurs[$_POST["tableChoisie"]] ; $i++) {
 
 
-        echo $arrayArray[$_POST["tableChoisie"]][$i] . " : ";
+        echo $arrayArray[$_POST["tableChoisie"]][$i];
+        if($i == 0){
+            echo " (NE PAS MODIFIER)";
+        }
+        echo " : ";
         $clef = $arrayArray[$_POST["tableChoisie"]][$i];
-        echo '<input type="text" name='.$clef.'> (valeur originale : ';
-        echo "<i>$data[$clef]</i>)";
+        if($i != 0) {
+            echo '<input type="text" name='.$clef.'>';
+            echo ' (valeur originale : ';
+            echo "<i>$data[$clef]</i>)";
+        } else {
+            echo '<input type="text" name='.$clef.' value='.$data[$clef].'>';
+        }
+
         echo "<br><br>";
     }
     $table = $_POST["tableChoisie"];

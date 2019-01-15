@@ -21,6 +21,7 @@ for ($i = 0 ; $i < $arrayLongueurs[$_POST["tableChoisie"]] ; $i++){
     $update = "UPDATE `livres`.`".$_POST["tableChoisie"]."` SET `".$elemToUpdate."`='".$_POST[$elemToUpdate]."' WHERE `".$id."`=".$_POST[$id];
     $conn->query($update);
 }
+
 echo "Modification effectuée.<br><br>";
 $conn->close();
 ?>
