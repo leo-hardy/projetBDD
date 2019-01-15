@@ -35,7 +35,7 @@ $mysqli = new mysqli('localhost', 'root', '');
 $query = "SELECT * FROM livres.".$_POST["tableChoisie"];
 
 
-$cpt = 0;
+$cpt = 1;
 if ($result = $mysqli->query($query)){
     while ($data = $result->fetch_assoc()){
         echo "Ligne ".$cpt." : ";
@@ -49,7 +49,7 @@ if ($result = $mysqli->query($query)){
     }
     $result->free();
 }
-
+$cpt--;
 
 $mysqli->close();
 ?>
