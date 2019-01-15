@@ -90,18 +90,20 @@ xhr_object.send(data);
 </script>
 </head>
 
-
-<body>
+<body style="background-color:#078c90;">
 <h1>Base de données &quot;Livres&quot;</h1>
 
+<center>
 <h2>
     Créer la base
-</h2>
+
 <form id="form1" name="form1" method="post" action="">
 
 <input type="button" name="BoutonCreer" id="BoutonCreer" value="Livres"
 onClick="AfficheCatalogue(this.form)"/>
 </form>
+</h2>
+</center>
 
 <p> </p>
 
@@ -135,10 +137,7 @@ onClick="AfficheCatalogue(this.form)"/>
     <input type="submit">
 </form>
 
-<p></p>
-
-
-
+<p>&nbsp;</p>
 
 <h2>Interroger la base de données</h2>
 <form id="form5" name="form5" method="post" action="requetes.php">
@@ -175,6 +174,7 @@ onClick="AfficheCatalogue(this.form)"/>
 
 
 <p>&nbsp;</p>
+<center>
 <h2>
     Effacer la base
 </h2>
@@ -182,6 +182,7 @@ onClick="AfficheCatalogue(this.form)"/>
     <input type="button" name="BoutonEff" id="BoutonEff" value="Effacer"
            onClick="Effacerbdd(this.form)"/>
 </form>
+</center>
 
 <p>&nbsp;</p>
 <div id="AfficheCatalogueDiv"></div>

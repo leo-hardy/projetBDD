@@ -16,7 +16,7 @@ if (!isset($_POST["requete"])){
 
     </head>
 
-    <body>
+    <body style="background-color:#078c90;"> 
 
     <h1>
         Résultat de la requête
@@ -71,11 +71,7 @@ if (!isset($_POST["requete"])){
             JOIN `livres`.`auteur` ON ecrit_par.id_auteur = auteur.id_auteur
             WHERE nom_auteur != 'Asimov' AND genre = 'science-fiction' ";
 
-    $sql11 = " SELECT nom_auteur FROM `livres`.`auteur` JOIN `livres`.`ecrit_par` ON auteur.id_auteur = ecrit_par.id_auteur
-            JOIN `livres`.`livre` ON livre.id_livre = ecrit_par.id_livre
-            JOIN `livres`.`edite_par` ON livre.id_livre = edite_par.id_livre
-            JOIN `livres`.`editeur` ON editeur.id_editeur = edite_par.id_editeur
-            WHERE nom_editeur =  \"J\'ai Lu\" ";
+    $sql11 = "";
 
     $sql12 = "SELECT titre_livre FROM `livres`.`auteur` JOIN `livres`.`ecrit_par` ON auteur.id_auteur = ecrit_par.id_auteur
     JOIN `livres`.`livre` ON livre.id_livre = ecrit_par.id_livre
@@ -99,7 +95,8 @@ if (!isset($_POST["requete"])){
 
     $sql17 = "SELECT nom_auteur, prenom_auteur, count(*) AS nb_livre FROM `livres`.`auteur` JOIN `livres`.`ecrit_par` ON auteur.id_auteur = ecrit_par.id_auteur
              JOIN `livres`.`livre` ON livre.id_livre = ecrit_par.id_livre
-             GROUP BY id_auteur";
+             GROUP BY auteur.id_auteur";
+
     $sql18 = "SELECT titre_livre, nom_auteur, langue, nationalite AS nationalite_auteur FROM `livres`.`auteur` JOIN `livres`.`ecrit_par` ON auteur.id_auteur = ecrit_par.id_auteur
             JOIN `livres`.`livre` ON livre.id_livre = ecrit_par.id_livre
             WHERE langue = 'anglais' AND nationalite NOT IN('anglais','americain') ";

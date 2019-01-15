@@ -16,7 +16,7 @@
 
 </head>
 
-<body>
+<body style="background-color:#078c90;">
 
 <h1>
     Modification d'enregistrement dans

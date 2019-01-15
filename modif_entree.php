@@ -4,7 +4,7 @@
     <title>Modification d'entrées</title>
 </head>
 
-<body>
+<body style="background-color:#078c90;">
 
 <h1>
     Modification d'enregistrement dans
@@ -71,9 +71,7 @@ $mysqli->close();
     </fieldset>
 </form>
 
-<form>
-    <input type='button' value='Retour page principale' onclick=window.location.href='Modifbdd.html'>
-</form>
+<p>&nbsp;</p>
 
 <form id="form2" name="form2" method="post" action="ajout_entree.php">
     <label>Nouvelle insertion : choix de la table : </label>
@@ -88,6 +86,8 @@ $mysqli->close();
     <input type="submit">
 </form>
 
+<p>&nbsp;</p>
+
 <form id="form3" name="form3" method="post" action="modif_entree.php">
     <label>Nouvelle modification : choix de la table : </label>
     <select name="tableChoisie">
@@ -99,6 +99,12 @@ $mysqli->close();
     </select>
     <br/>
     <input type="submit">
+</form>
+
+<p>&nbsp;</p>
+
+<form>
+    <input type='button' value='Retour page principale' onclick=window.location.href='Modifbdd.html'>
 </form>
 
 </html>

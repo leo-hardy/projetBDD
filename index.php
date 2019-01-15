@@ -5,21 +5,20 @@
  </head>
 
 
- <body>
- <?php echo '<p>PL & Léo !</p>'; ?>
+ <body style="background-color:#078c90;">
+ <?php echo '<p>Pierre-Louis & Léo </p>'; ?>
 
+ <p>&nbsp;</p>
+ <h1 style ="text-align:center;">Entrée dans le projet</h1>
+ <p>&nbsp;</p>
+
+ <center>
  <button
- onclick="window.location.href='Modifbdd.html'";
- >Créer la base
+ onclick="window.location.href='Modifbdd.html'"; margin:auto; 
+ >Je veux aller vers la base de données
  </button>
+</center>
 
-
-
- <h1>Entrée de l'application</h1>
- <p>&nbsp;</p>
- <h2>Liens :</h2>
- <p><a href="ListeVoitures.php">Liste des voitures en PHP</a></p>
- <p>&nbsp;</p>
 
 
 
