@@ -17,7 +17,7 @@ $arrayArray = ["auteur" => $arrayAuteur, "livre" => $arrayLivre, "ecrit_par" => 
 $inser = "INSERT INTO `livres`."."`".$_POST["tableChoisie"]."` VALUES (";
 for ($i = 0 ; $i < $arrayLongueurs[$_POST["tableChoisie"]] ; $i++){
     $inser = $inser."'";
-    $inser = $inser.$_POST[$arrayArray[$_POST["tableChoisie"]][$i]];
+    $inser = $inser.preg_replace("/'/", "\'", $_POST[$arrayArray[$_POST["tableChoisie"]][$i]]);
     $inser = $inser."'";
     if ($i < $arrayLongueurs[$_POST["tableChoisie"]] - 1){
         $inser = $inser.",";

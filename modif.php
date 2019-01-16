@@ -18,7 +18,9 @@ $arrayArray = ["auteur" => $arrayAuteur, "livre" => $arrayLivre, "ecrit_par" => 
 for ($i = 0 ; $i < $arrayLongueurs[$_POST["tableChoisie"]] ; $i++){
     $id = $arrayArray[$_POST["tableChoisie"]][0];
     $elemToUpdate = $arrayArray[$_POST["tableChoisie"]][$i];
-    $update = "UPDATE `livres`.`".$_POST["tableChoisie"]."` SET `".$elemToUpdate."`='".$_POST[$elemToUpdate]."' WHERE `".$id."`=".$_POST[$id];
+    $update = "UPDATE `livres`.`".$_POST["tableChoisie"]."` SET `".$elemToUpdate."`='".preg_replace("/'/",
+            "\'", $_POST[$elemToUpdate])."' WHERE `".$id."`=".$_POST[$id];
+    echo $update."<br>";
     $conn->query($update);
 }
 
