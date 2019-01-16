@@ -48,16 +48,53 @@ $conn->query($sql4); $conn->query($rename4);
 $conn->query($sql5); $conn->query($rename5);
 
 //remplissage des tables
-$info1 = "INSERT INTO `livres`.`auteur` (`id_auteur`, `nom_auteur`, `prenom_auteur`, `naissance`, `deces`, `nationalite`) VALUES ('1','Nothomb','Amelie','09/07/1966','-','belge'), ('2','Houellebecq','Michel','26/02/1956','-','francais')";
-$info2 = "INSERT INTO `livres`.`ecrit_par` (`id_auteur`,`id_livre`) VALUES ('2','2'), ('3','3'), ('3','4'), ('3','1')";
-$info3 = "INSERT INTO `livres`.`edite_par` (`id_editeur`,`id_livre`) VALUES ('1','1'), ('2','3'), ('3','2'), ('5','4')";
-$info4 = "INSERT INTO `livres`.`editeur` (`id_editeur`,`nom_editeur`,`site_web`) VALUES ('1',\"J\'ai Lu\",'www.jailu.com '), ('2','Gallimard','www.gallimard.fr'), ('3','LGF','-'), ('4','Albin Michel','www.albin-michel.fr')";
-$info5 = "INSERT INTO `livres`.`livre` (`id_livre`,`titre_livre`,`genre`,`parution`,`nature`,`langue`) VALUES ('1','Le cycle des robots','science-fiction','1950','nouvelle','anglais'), ('2',\"La possibilite d\'une ile\",'sentimental','2005','roman','francais'), ('3','Fondation','science-fiction','1942','roman','anglais')" ;
-$conn->query($info1);
-mysqli_query($conn, $info2);
-$conn->query($info3);
-$conn->query($info4);
-$conn->query($info5);
+$arrayCSV = [0 => "Auteur.csv", 1 => "Ecrit_par.csv", 2 => "Edite_par.csv", 3 => "Editeur.csv", 4 => "Livre.csv"];
+$arrayNames = ["Auteur.csv" => "auteur", "Ecrit_par.csv" => "ecrit_par", "Edite_par.csv" => "edite_par",
+    "Editeur.csv" => "editeur", "Livre.csv" => "livre"];
+
+$arrayAuteur = [0 => "id_auteur", 1 => "nom_auteur", 2 => "prenom_auteur",
+    3 => "naissance", 4 => "deces", 5 => "nationalite"];
+$arrayEditeur = [0 => "id_editeur", 1 => "nom_editeur", 2 => "site_web"];
+$arrayEcritPar = [0 => "id_auteur", 1 => "id_livre"];
+$arrayEditePar = [0 => "id_editeur", 1 => "id_livre"];
+$arrayLivre = [0 => "id_livre", 1 => "titre_livre", 2 => "genre", 3 => "parution",
+    4 => "nature", 5 => "langue"];
+
+$arrayLongueurs = ["auteur" => 6, "editeur" => 3, "ecrit_par" => 2, "edite_par" => 2, "livre" => 6];
+
+$arrayArray = ["auteur" => $arrayAuteur, "livre" => $arrayLivre, "ecrit_par" => $arrayEcritPar,
+    "edite_par" => $arrayEditePar, "editeur" => $arrayEditeur];
+
+for ($i = 0 ; $i < 5 ; $i++){
+    if (($handle = fopen($arrayCSV[$i], "r")) !== FALSE) {
+        $data = fgetcsv($handle, 1000, ";");
+        while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+            $addInfo = "INSERT INTO `livres`.`".$arrayNames[$arrayCSV[$i]]."` (";
+            for ($j = 0 ; $j < $arrayLongueurs[$arrayNames[$arrayCSV[$i]]] ; $j++){
+                $addInfo = $addInfo."`".$arrayArray[$arrayNames[$arrayCSV[$i]]][$j]."`";
+                if ($j < $arrayLongueurs[$arrayNames[$arrayCSV[$i]]] - 1){
+                    $addInfo = $addInfo.",";
+                } else {
+                    $addInfo = $addInfo.") VALUES (";
+                }
+            }
+            for ($c = 0 ; $c < $arrayLongueurs[$arrayNames[$arrayCSV[$i]]] ; $c++) {
+                $withoutUnprotectedSpaces = preg_replace("/'/", "\'", $data[$c]);
+                $addInfo = $addInfo."'".$withoutUnprotectedSpaces."'";
+                if ($c < $arrayLongueurs[$arrayNames[$arrayCSV[$i]]] - 1){
+                    $addInfo = $addInfo.",";
+                } else {
+                    $addInfo = $addInfo.")";
+                }
+            }
+            $conn->query($addInfo);
+            $addInfo = null;
+        }
+        fclose($handle);
+    }
+}
+
+
 
 
 
