@@ -80,18 +80,22 @@ if (!isset($_POST["requete"])){
     WHERE nom_auteur = 'Asimov' AND prenom_auteur = 'Isaac' AND genre='science-fiction' AND nom_editeur != 'Gallimard' " ;
 
     
-    $sql13 = "";
+    $sql13 = "SELECT titre_livre FROM `livres`.`auteur` JOIN `livres`.`ecrit_par` ON auteur.id_auteur = ecrit_par.id_auteur
+                JOIN `livres`.`livre` ON ecrit_par.id_livre = livre.id_livre
+                WHERE deces != '-' ";
+
     $sql14 ="" ; 
+
     $sql15 = " SELECT nom_auteur, count(*) AS nombre_livres FROM `livres`.`auteur` JOIN `livres`.`ecrit_par` ON auteur.id_auteur = ecrit_par.id_auteur
             JOIN `livres`.`livre` ON livre.id_livre = ecrit_par.id_livre 
             GROUP BY auteur.id_auteur
             HAVING count(*) >1 ";
 
     $sql16 = "SELECT parution, titre_livre, nom_editeur FROM `livres`.`auteur` JOIN `livres`.`ecrit_par` ON auteur.id_auteur = ecrit_par.id_auteur
-    JOIN `livres`.`livre` ON livre.id_livre = ecrit_par.id_livre
-    JOIN `livres`.`edite_par` ON livre.id_livre = edite_par.id_livre
-    JOIN `livres`.`editeur` ON editeur.id_editeur = edite_par.id_editeur 
-    HAVING nom_editeur = 'Gallimard' " ;
+                JOIN `livres`.`livre` ON livre.id_livre = ecrit_par.id_livre
+                JOIN `livres`.`edite_par` ON livre.id_livre = edite_par.id_livre
+                JOIN `livres`.`editeur` ON editeur.id_editeur = edite_par.id_editeur 
+                HAVING nom_editeur = 'Gallimard' " ;
 
     $sql17 = "SELECT nom_auteur, prenom_auteur, count(*) AS nb_livre FROM `livres`.`auteur` JOIN `livres`.`ecrit_par` ON auteur.id_auteur = ecrit_par.id_auteur
              JOIN `livres`.`livre` ON livre.id_livre = ecrit_par.id_livre
